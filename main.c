@@ -30,7 +30,7 @@ void insert(LES *les, int value){
     if(isFull(les)){
         return;
     }
-    int idx = get_index(les, value);
+    int idx = getIndex(les, value);
     moveRight(les, idx);
     les->dados[idx] = value;
     les->qntd++;
@@ -38,12 +38,18 @@ void insert(LES *les, int value){
 
 void show(LES *les){
     for(int i = 0; i<les->qntd; i++){
-        printf("%d" , les->dados[i]);
+        printf("%d " , les->dados[i]);
     }
     printf("\n");
 }
 
 int main() {
-    printf("Hello World\n");
+    LES les;
+    les.qntd = 0;
+    LES *p_les = &les;
+    for(int num=10; num>=0; num--){
+        insert(p_les, num);
+        show(p_les);
+    }
     return 0;
 }
